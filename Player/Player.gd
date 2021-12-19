@@ -26,6 +26,8 @@ func get_input()->Vector2:
 	return input
 
 func _physics_process(delta):
+	print($AnimatedSprite.get_speed_scale())
+
 	var direction = get_input()	
 
 	if Input.is_action_just_pressed('swipe') and !is_in_attack_cooldown:
@@ -70,11 +72,14 @@ func _on_AnimatedSprite_animation_finished()->void:
 			$AnimatedSprite.play('stationary')
 
 func choose_animation()->void:
+	if is_in_attack_cooldown:
+		$AnimatedSprite.set_speed_scale(( swipe_cooldown_speed_penalty / 100.0 + 1))
+	else:
+		$AnimatedSprite.set_speed_scale(1)
+
 	if is_attacking:
 		$AnimatedSprite.play('swipe')
 	elif velocity.length() > .2:
-		if is_in_attack_cooldown:
-			$AnimatedSprite.set_speed_scale(( swipe_cooldown_speed_penalty / 100.0 + 1))
 		$AnimatedSprite.play('walk')
 
 func _on_Timer_timeout()->void:
