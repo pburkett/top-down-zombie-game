@@ -14,7 +14,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.0786702, 0 )
 scale = Vector2( 0.989387, 1 )
-polygon = PoolVector2Array( 11.3333, -13, 11.3333, 8.5, 5.33333, 12, -9.66667, 11.5, -14.6667, 8, -15.1667, -13 )
+polygon = PoolVector2Array( 11.2162, -10.4778, 11.3333, 8.5, 5.33333, 12, -9.66667, 11.5, -14.6667, 8, -15.1067, -10.4799, -11.9831, -13.0604, 7.35161, -13.4271 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.5, 0 )
