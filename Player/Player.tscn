@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/new_animation_walk/OUTPUT.res" type="SpriteFrames" id=2]
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 556, 353 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.0786702, 0 )
+scale = Vector2( 0.989387, 1 )
+polygon = PoolVector2Array( 11.3333, -13, 11.3333, 8.5, 5.33333, 12, -9.66667, 11.5, -14.6667, 8, -15.1667, -13 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.5, 0 )
+frames = ExtResource( 2 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
