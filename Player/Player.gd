@@ -11,7 +11,7 @@ var is_attacking = false
 var is_in_attack_cooldown = false
 onready var animator = $AnimationPlayer
 onready var sprite = $Sprite
-onready var attack_end_lag_timer = $AttackEndLag
+onready var swipe_end_lag_timer = get_node('Swipe/SwipeEndLag')
 
 func _ready():
 	animator.connect("animation_finished", self, "_on_animation_finished")
@@ -52,14 +52,12 @@ func get_max_speed()->float:
 func rotate_sprite()->void:
 	var new_angle
 	if is_attacking:
-		new_angle = stepify(sprite.rotation, .25*PI) 
+		new_angle = stepify(rotation, .25*PI) 
 	else:
-		new_angle = lerp_angle(sprite.rotation, velocity.angle() + .5*PI, .1)
-	sprite.rotation = new_angle
-	$BodyCollision.rotation = new_angle
+		new_angle = lerp_angle(rotation, velocity.angle() + .5*PI, .1)
+	rotation = new_angle
 		
 func choose_animation(current_animation)->void:
-	print('choose signal', current_animation,velocity.length(), velocity.length() > 50)
 	if is_in_attack_cooldown:
 		animator.set_speed_scale(( swipe_cooldown_speed_penalty / 100.0 + 1))
 	else:
@@ -69,7 +67,7 @@ func choose_animation(current_animation)->void:
 		is_in_attack_cooldown = true
 		is_attacking = false		
 		animator.play('idle')
-		attack_end_lag_timer.start()
+		swipe_end_lag_timer.start()
 
 	if is_attacking:
 		animator.play('swipe')
@@ -77,8 +75,6 @@ func choose_animation(current_animation)->void:
 		animator.play('walk')
 	else:
 		animator.play('idle')
-
-
 
 func _on_Timer_timeout()->void:
 	is_in_attack_cooldown = false
