@@ -16,6 +16,7 @@ rotation = 3.1059
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 791, 146 )
+status = "player_spotted"
 
 [node name="Wall" parent="." instance=ExtResource( 2 )]
 

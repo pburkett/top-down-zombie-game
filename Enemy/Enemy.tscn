@@ -11,7 +11,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( 0, 0 )
-collision_mask = 3
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -19,7 +19,6 @@ position = Vector2( -14, 9 )
 scale = Vector2( 3.17708, -161.599 )
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Hurtbox"]
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="."]
@@ -28,7 +27,8 @@ scale = Vector2( 3.17708, -161.599 )
 polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
 
 [node name="FireRate" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
+one_shot = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]

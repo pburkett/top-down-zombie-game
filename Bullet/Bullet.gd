@@ -9,6 +9,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	
 	rotation = linear_velocity.angle() + .5*PI
 
 func _integrate_forces(state):
