@@ -78,3 +78,6 @@ func choose_animation(current_animation)->void:
 
 func _on_Timer_timeout()->void:
 	is_in_attack_cooldown = false
+
+func area_entered():
+	print('yes?')
