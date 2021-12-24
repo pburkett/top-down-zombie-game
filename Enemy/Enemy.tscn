@@ -26,3 +26,8 @@ polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576,
 position = Vector2( -14, 9 )
 scale = Vector2( 3.17708, -161.599 )
 polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
+
+[node name="FireRate" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
