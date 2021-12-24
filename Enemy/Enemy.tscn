@@ -30,4 +30,5 @@ polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576,
 [node name="FireRate" type="Timer" parent="."]
 wait_time = 0.5
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]

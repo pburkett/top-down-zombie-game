@@ -1,5 +1,5 @@
 extends Area2D
-export var damage = 100
+export var damage = 50
 
 
 # Declare member variables here. Examples:

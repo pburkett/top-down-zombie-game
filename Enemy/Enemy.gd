@@ -3,9 +3,11 @@ export var view_distance = 400
 export var turn_speed = .08
 export var hit_points = 100
 export var player_spotted = false
+var bullet = preload("res://Bullet.tscn")
+
 func _ready():
-	for hitbox_node in 	get_tree().get_nodes_in_group("hitbox"):
-		hitbox_node.connect("area_entered", self, "_on_hurtbox_area_entered")
+	connect("area_entered", self, "_on_hurtbox_area_entered")
+	print('ready')
 
 func _process(delta):
 	pass
@@ -35,10 +37,10 @@ func handle_rotation()->void:
 func turn_towards_player(currently_facing, vector_to_player)->void:
 	rotation = lerp(currently_facing, vector_to_player, turn_speed).angle()
 
-func _on_hurtbox_area_entered(area ):
-	for item in $Hurtbox.get_overlapping_areas():
-		if item.is_in_group('hitbox'):
-			take_damage(item.damage)
+func _on_Hurtbox_area_entered(area ):
+	print(area.damage)
+	if area.is_in_group('hitbox'):
+		take_damage(area.damage)
 
 func take_damage(damage_amount):
 	hit_points -= damage_amount
@@ -49,10 +51,8 @@ func die():
 	queue_free()
 
 func _on_FireRate_timeout():
-	print('timeout')
-	var scene = load("res://Bullet.tscn")
-	var new_bullet = scene.instance()
+	var new_bullet = bullet.instance()
 	var currently_facing = Vector2(cos(rotation), sin(rotation))
-	new_bullet.add_central_force(currently_facing * 1000)
-	new_bullet.position = global_position + currently_facing * 5
-	get_node("/root/Level").add_child(new_bullet)
+	new_bullet.apply_impulse(Vector2.ZERO, currently_facing * 1000)
+	new_bullet.position = global_position + currently_facing * 30
+	get_tree().get_root().call_deferred("add_child",new_bullet)
