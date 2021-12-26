@@ -27,7 +27,7 @@ scale = Vector2( 3.17708, -161.599 )
 polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
 
 [node name="FireRate" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 4096.0
 one_shot = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

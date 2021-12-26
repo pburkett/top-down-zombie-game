@@ -2,8 +2,10 @@ extends Node2D
 export var view_distance = 400
 export var turn_speed = .08
 export var hit_points = 100
-export var status = "idle"
+export var  bullets_per_second = 1.0
+export var bullet_speed = 1000
 export var possible_statuses = {"idle": "idle", "alerted": "idle", "player_spotted": "turn_towards_player", "firing": "shoot"}
+var status = "idle"
 var bullet = preload("res://Bullet/Bullet.tscn")
 var currently_facing 
 var vector_to_player
@@ -11,6 +13,7 @@ onready  var player_node = get_node("/root/Level/Player")
 
 func _ready():
 	connect("area_entered", self, "_on_hurtbox_area_entered")
+	$FireRate.wait_time = 1 / bullets_per_second
 
 func _process(delta):
 	pass
@@ -20,6 +23,7 @@ func _physics_process(delta):
 	call(possible_statuses[status])
 
 func idle():
+	#play idle animation
 	pass
 
 func shoot():
@@ -61,7 +65,8 @@ func die():
 func _on_FireRate_timeout():
 	var new_bullet = bullet.instance()
 	var currently_facing = Vector2(cos(rotation), sin(rotation))
-	new_bullet.apply_impulse(Vector2.ZERO, currently_facing * 1000)
+	new_bullet.apply_impulse(Vector2.ZERO, currently_facing * bullet_speed)
 	new_bullet.position = global_position + currently_facing * 30
 	new_bullet.rotation = currently_facing.angle()
+	print(new_bullet.rotation)
 	get_tree().get_root().call_deferred("add_child",new_bullet)

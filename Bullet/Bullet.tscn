@@ -32,9 +32,10 @@ height = 5.99438
 radius = 1.0
 height = 3.99438
 
-[node name="Bullet" type="RigidBody2D" groups=["hitbox"]]
+[node name="Bullet" type="RigidBody2D" groups=["clear_on_level_reload", "hitbox"]]
 position = Vector2( 339, 317 )
 scale = Vector2( 1, 1.00093 )
+collision_layer = 2
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
 contacts_reported = 3
