@@ -41,6 +41,7 @@ gravity_scale = 0.0
 contacts_reported = 3
 contact_monitor = true
 script = ExtResource( 1 )
+collisions_before_dissapear = 1
 
 [node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
 script = SubResource( 4 )

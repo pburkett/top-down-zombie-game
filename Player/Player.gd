@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 export var max_speed = 300
-export var swipe_speed_boost_percentage = 100
-export var swipe_cooldown_speed_penalty = -40
 export var acceleration_speed = .1
 export var deceleration_speed = .10
+export var swipe_speed_boost_percentage = 100
+export var swipe_cooldown_speed_penalty = -40
 export var turn_speed = .1
 export var hit_points = 200
 var velocity = Vector2()
@@ -19,7 +19,6 @@ signal restart_level
 func _ready():
 	animator.connect("animation_finished", self, "_on_animation_finished")
 	var level_node = get_node('/root/Level')
-	print(level_node)
 	connect("restart_level", level_node , "restart_level")
 	animator.play('idle')
 	
@@ -95,5 +94,4 @@ func take_damage(damage_amount):
 		die()
 
 func die():
-	print('die')
 	emit_signal("restart_level")		

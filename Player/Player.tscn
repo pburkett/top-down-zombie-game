@@ -172,6 +172,7 @@ frame = 8
 
 [node name="Swipe" type="Area2D" parent="." groups=["hitbox"]]
 script = ExtResource( 3 )
+damage = 100
 
 [node name="HitBox" type="CollisionShape2D" parent="Swipe"]
 position = Vector2( -4.46776, -9.50006 )

@@ -1,14 +1,11 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 193.662, 41.9516 )
+extents = Vector2( 196.331, 41.9516 )
 
 [node name="Wall" type="StaticBody2D"]
-position = Vector2( 271, 304 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 485, 385 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 211.25, 19.5 )
+position = Vector2( 0, -1 )
 shape = SubResource( 1 )
