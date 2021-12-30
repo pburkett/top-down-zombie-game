@@ -19,7 +19,6 @@ position = Vector2( -14, 9 )
 scale = Vector2( 3.17708, -161.599 )
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Hurtbox"]
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="."]
