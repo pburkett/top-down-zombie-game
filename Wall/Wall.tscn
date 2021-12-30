@@ -1,11 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 196.331, 41.9516 )
+extents = Vector2( 205.665, 41.9516 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1
 
 [node name="Wall" type="StaticBody2D"]
 position = Vector2( 485, 385 )
+collision_layer = 5
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( -0.334503, -4 )
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.45444, -4.4545 )
+scale = Vector2( -417.941, 81.181 )
+texture = SubResource( 3 )

@@ -1,38 +1,59 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/CastToPlayer.gd" type="Script" id=2]
 
-[node name="Enemy" type="StaticBody2D"]
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.458861, 0.572785, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.615914, 0.103454, 0.103454, 1, 0.738281, 0.124008, 0.124008, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1
+
+[node name="Enemy" type="PathFollow2D"]
 position = Vector2( -2.38419e-07, -2.38419e-07 )
 rotation = 0.00326735
+offset = 100.0
+cubic_interp = false
+lookahead = 20.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CastToPlayer" type="RayCast2D" parent="."]
-position = Vector2( 0, -1 )
-enabled = true
-cast_to = Vector2( 0, 0 )
-collision_mask = 2
-script = ExtResource( 2 )
-
-[node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2( -14, 9 )
-scale = Vector2( 3.17708, -161.599 )
-
-[node name="BodyCollision" type="CollisionPolygon2D" parent="Hurtbox"]
-polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
-
-[node name="BodyCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -14, 9 )
-scale = Vector2( 3.17708, -161.599 )
-polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
 
 [node name="FireRate" type="Timer" parent="."]
 wait_time = 4096.0
 one_shot = true
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[node name="Body" type="StaticBody2D" parent="."]
+position = Vector2( 2.39197e-07, 2.37639e-07 )
+rotation = -2.32831e-10
+
+[node name="BodyCollision" type="CollisionPolygon2D" parent="Body"]
+position = Vector2( -14, 9 )
+scale = Vector2( 3.17708, -161.599 )
+polygon = PoolVector2Array( 9.45083, 0.00651192, -0.613027, -0.0436401, -0.645936, 0.15438, 9.43438, 0.105522 )
+
+[node name="Hurtbox" type="Area2D" parent="Body"]
+position = Vector2( -18.6598, 15.9989 )
+rotation = 5.86276e-10
+scale = Vector2( 3.17708, -161.599 )
+
+[node name="BodyCollision" type="CollisionPolygon2D" parent="Body/Hurtbox"]
+position = Vector2( 0.853668, -0.000330061 )
+polygon = PoolVector2Array( 12.5901, 0.000808753, -2.50979, -0.0496667, -2.55916, 0.247363, 12.5572, 0.198829 )
+
+[node name="CastToPlayer" type="RayCast2D" parent="Body"]
+visible = false
+position = Vector2( 22.0032, -0.0718877 )
+rotation = 2.14828
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.59397, -0.647131 )
+scale = Vector2( 47.4312, 31.4614 )
+texture = SubResource( 2 )
+
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
+[connection signal="area_entered" from="Body/Hurtbox" to="." method="_on_Hurtbox_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
 
@@ -32,18 +32,27 @@ height = 5.99438
 radius = 1.0
 height = 3.99438
 
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.549342, 0.773026 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.549342, 0.549342, 0.549342, 1, 0.0309448, 0.110309, 0.203125, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+width = 1
+
 [node name="Bullet" type="RigidBody2D" groups=["clear_on_level_reload", "hitbox"]]
 position = Vector2( 339, 317 )
 scale = Vector2( 1, 1.00093 )
 collision_layer = 2
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
-contacts_reported = 3
+contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 1 )
 collisions_before_dissapear = 1
 
 [node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 3
 script = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox"]
@@ -52,3 +61,7 @@ shape = SubResource( 1 )
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 6.87916, 13.5531 )
+texture = SubResource( 6 )
