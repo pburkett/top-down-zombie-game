@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 export var max_speed = 300
-export var swipe_speed_boost_percentage = 100
-export var swipe_cooldown_speed_penalty = -40
 export var acceleration_speed = .1
 export var deceleration_speed = .10
+export var swipe_speed_boost_percentage = 100
+export var swipe_cooldown_speed_penalty = -40
 export var turn_speed = .1
+export var hit_points = 200
 var velocity = Vector2()
 var is_attacking = false
 var is_in_attack_cooldown = false
@@ -13,8 +14,12 @@ onready var animator = $AnimationPlayer
 onready var sprite = $Sprite
 onready var swipe_end_lag_timer = get_node('Swipe/SwipeEndLag')
 
+signal restart_level
+
 func _ready():
 	animator.connect("animation_finished", self, "_on_animation_finished")
+	var level_node = get_node('/root/Level')
+	connect("restart_level", level_node , "restart_level")
 	animator.play('idle')
 	
 func get_input()->Vector2:
@@ -42,7 +47,7 @@ func _physics_process(delta):
 	rotate_sprite()
 
 func get_max_speed()->float:
-	var current_max_speed: float = float(max_speed)
+	var current_max_speed = float(max_speed)
 	if is_attacking:
 		current_max_speed *= (swipe_speed_boost_percentage / 100.0 + 1)
 	elif is_in_attack_cooldown:
@@ -62,7 +67,6 @@ func choose_animation(current_animation)->void:
 		animator.set_speed_scale(( swipe_cooldown_speed_penalty / 100.0 + 1))
 	else:
 		animator.set_speed_scale(1)
-
 	if current_animation == 'swipe':
 		is_in_attack_cooldown = true
 		is_attacking = false		
@@ -78,3 +82,17 @@ func choose_animation(current_animation)->void:
 
 func _on_Timer_timeout()->void:
 	is_in_attack_cooldown = false
+
+func _on_Hurtbox_area_entered(area)->void:
+	if area.is_in_group('hitbox'):
+		if area.get_parent() != self:
+			take_damage(area.damage)
+	
+func take_damage(damage_amount):
+	print('player hit for ', damage_amount, ' points')
+	hit_points -= damage_amount
+	if hit_points <= 0:
+		die()
+
+func die():
+	emit_signal("restart_level")		
