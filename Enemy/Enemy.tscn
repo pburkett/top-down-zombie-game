@@ -32,17 +32,9 @@ position = Vector2( -14, 9 )
 scale = Vector2( 3.17708, -161.599 )
 polygon = PoolVector2Array( 9.45083, 0.00651192, -0.613027, -0.0436401, -0.645936, 0.15438, 9.43438, 0.105522 )
 
-<<<<<<< HEAD
-[node name="BodyCollision" type="CollisionPolygon2D" parent="Hurtbox"]
-polygon = PoolVector2Array( 10.2934, -0.0393206, -0.93576, -0.0589808, -0.93576, 0.176942, 10.2934, 0.147452 )
-
-[node name="BodyCollision" type="CollisionPolygon2D" parent="."]
-position = Vector2( -14, 9 )
-=======
 [node name="Hurtbox" type="Area2D" parent="Body"]
 position = Vector2( -18.6598, 15.9989 )
 rotation = 5.86276e-10
->>>>>>> dev
 scale = Vector2( 3.17708, -161.599 )
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="Body/Hurtbox"]
