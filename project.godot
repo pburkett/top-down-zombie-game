@@ -29,6 +29,12 @@ filter=false
 import=false
 renderer=false
 
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
 [input]
 
 ui_left={
@@ -79,3 +85,4 @@ common/enable_pause_aware_picking=true
 
 quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
+vram_compression/import=false

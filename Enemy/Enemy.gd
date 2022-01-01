@@ -1,5 +1,5 @@
 extends PathFollow2D
-export var view_distance = 400
+export var view_distance = 800
 export var turn_speed = .08
 export var hit_points = 100
 export var  bullets_per_second = 1.0
@@ -22,6 +22,7 @@ export var deceleration_speed = .10
 export var field_of_view_degrees = 120
 export var fire_field_degrees = 90
 
+
 var status = "idle"
 var bullet = preload("res://Bullet/Bullet.tscn")
 var currently_facing 
@@ -35,10 +36,12 @@ var last_status
 
 onready var player_node = get_node("/root/Level/Player")
 onready var ray_cast_to_player = get_node("Body/CastToPlayer")
+onready var body_animation_player = get_node("Body/AnimatedSprite")
 
 func _ready():
 	connect("area_entered", self, "_on_hurtbox_area_entered")
 	$FireRate.wait_time = 1 / bullets_per_second
+	body_animation_player.play('idle')
  
 func _process(delta):
 	pass
@@ -118,6 +121,7 @@ func die():
 	queue_free()
 
 func _on_FireRate_timeout():
+	body_animation_player.play('fire')
 	var new_bullet = bullet.instance()
 	new_bullet.apply_impulse(Vector2.ZERO, currently_facing * bullet_speed)
 	new_bullet.position = global_position + currently_facing * 40
@@ -134,6 +138,7 @@ func shoot():
 		$FireRate.start()
 
 func move_along_path(accelerate, speed = 0):
+	body_animation_player.play('idle')
 	rotate = accelerate
 	if accelerate:
 		$Body.rotation = 0
@@ -141,3 +146,5 @@ func move_along_path(accelerate, speed = 0):
 	else:
 		current_speed = lerp(current_speed, 0, deceleration_speed)
 	offset += current_speed
+
+	
