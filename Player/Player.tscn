@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/new_animation_walk/OUTPUT.png" type="Texture" id=2]
 [ext_resource path="res://Player/Swipe.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -144,12 +147,18 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 0, 0 )
 
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( 7.00005, 13.5, 13, 8.49994, 13, -9.00006, 8.99995, -9.00003, 8.99998, -3.50003, -11, -3.49997, -11, -8.99997, -15, -8.99994, -15, 8.50006, -8.99995, 13.5 )
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 569, 338 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 collision_layer = 7
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="BodyCollision" type="CollisionPolygon2D" parent="."]
 position = Vector2( 3.02675, 0.49472 )
@@ -158,6 +167,7 @@ polygon = PoolVector2Array( 8.05878, -2.99475, 8.05882, 8.00525, 4.01593, 12.005
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
+"anims/New Anim" = SubResource( 6 )
 anims/RESET = SubResource( 1 )
 anims/idle = SubResource( 4 )
 anims/swipe = SubResource( 3 )
@@ -168,7 +178,6 @@ position = Vector2( -1, 0.5 )
 scale = Vector2( 0.998665, 1 )
 texture = ExtResource( 2 )
 hframes = 23
-frame = 8
 
 [node name="Swipe" type="Area2D" parent="." groups=["hitbox"]]
 script = ExtResource( 3 )
@@ -190,6 +199,9 @@ one_shot = true
 position = Vector2( 3.02675, 0.49472 )
 scale = Vector2( 0.989387, 1 )
 polygon = PoolVector2Array( 10.0802, -3.99478, 10.0803, 8.00522, 4.01593, 13.0052, -12.1557, 13.0053, -18.2201, 8.00534, -18.2201, -3.99466, -18.2201, -9.49466, -14.1772, -9.49469, -14.1772, -3.99467, 6.03732, -3.99475, 6.03731, -9.49475, 10.0802, -9.49478 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 7 )
 
 [connection signal="timeout" from="Swipe/SwipeEndLag" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

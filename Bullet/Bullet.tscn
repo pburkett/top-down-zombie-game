@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Bullet/assets/main_spritesheet.res" type="SpriteFrames" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
 bounce = 2.0
@@ -32,21 +33,13 @@ height = 5.99438
 radius = 1.0
 height = 3.99438
 
-[sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0, 0.549342, 0.773026 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.549342, 0.549342, 0.549342, 1, 0.0309448, 0.110309, 0.203125, 1 )
-
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
-width = 1
-
 [node name="Bullet" type="RigidBody2D" groups=["clear_on_level_reload", "hitbox"]]
-position = Vector2( 339, 317 )
-scale = Vector2( 1, 1.00093 )
+position = Vector2( 346, 316 )
+scale = Vector2( 1.00049, 1.08801 )
 collision_layer = 2
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
-contacts_reported = 1
+contacts_reported = 20
 contact_monitor = true
 script = ExtResource( 1 )
 collisions_before_dissapear = 1
@@ -56,12 +49,17 @@ collision_layer = 3
 script = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2( 0, 0.00186157 )
 shape = SubResource( 1 )
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 6.87916, 13.5531 )
-texture = SubResource( 6 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 2 )
+animation = "traveling"
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
