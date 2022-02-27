@@ -79,7 +79,6 @@ current = true
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 55.9771, 560.006 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 color = Color( 0.996078, 1, 0.627451, 1 )
 energy = 1.3
