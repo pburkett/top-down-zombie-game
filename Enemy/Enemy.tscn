@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/CastToPlayer.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/assets/main_spritesheet.res" type="SpriteFrames" id=3]
+[ext_resource path="res://Enemy/assets/main_spritesheet.aseprite" type="SpriteFrames" id=3]
 [ext_resource path="res://flashlight.png" type="Texture" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=1]
