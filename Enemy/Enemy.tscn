@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/CastToPlayer.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/assets/main_spritesheet.res" type="SpriteFrames" id=3]
+[ext_resource path="res://Enemy/assets/main_spritesheet.aseprite" type="SpriteFrames" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 16.0261, 7.94768, -7.97382, 8.0261, -8.05224, -15.9738, 15.9476, -16.0522 )
