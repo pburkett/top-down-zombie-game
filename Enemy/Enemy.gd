@@ -13,8 +13,8 @@ export var possible_statuses = {
 		}
 var player_last_known_location 
 
-export var patrol_speed = 1
-export var pursuit_speed = 1.5
+export var patrol_speed = .5
+export var pursuit_speed = .8	
 var current_speed = 0
 export var acceleration_speed = .1
 export var deceleration_speed = .10
@@ -49,8 +49,6 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	print(offset)
-
 	currently_facing = Vector2(cos($Body.global_rotation), sin($Body.global_rotation))
 	vector_to_player = global_position.direction_to(player_node.get_position())	
 	dot_product_to_player = vector_to_player.dot(currently_facing)
@@ -104,18 +102,16 @@ func turn_towards_player()->void:
 
 func path_to_player()->void:
 	var path = navigation.get_simple_path(player_last_known_location.round(), position.round(), true)
-	print(player_last_known_location.round(), global_position.round() ,path)
 	var curve = get_parent().get_curve()
 	curve.clear_points()
 
 	for index in path.size():
 		curve.add_point(path[-index-1])
-	# for x in path:
-	# 	curve.add_point(x)
 	offset = 0
 
 
 func _on_Hurtbox_area_entered(area ):
+	print('signal')
 	if area.is_in_group('hitbox'):
 		take_damage(area.damage)
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/CastToPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/assets/main_spritesheet.res" type="SpriteFrames" id=3]
-[ext_resource path="res://scaled-flashlight.png" type="Texture" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 16.0261, 7.94768, -7.97382, 8.0261, -8.05224, -15.9738, 15.9476, -16.0522 )
@@ -17,7 +16,6 @@ field_of_view_degrees = 90
 fire_field_degrees = 60
 
 [node name="FireRate" type="Timer" parent="."]
-wait_time = 4096.0
 
 [node name="Body" type="StaticBody2D" parent="."]
 rotation = -2.32831e-10
@@ -53,8 +51,5 @@ animation = "idle"
 position = Vector2( -2.39197e-07, -2.37639e-07 )
 occluder = SubResource( 1 )
 
-[node name="Light2D" type="Light2D" parent="Body"]
-position = Vector2( 63.9997, -0.20911 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-energy = 0.8
+[connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
+[connection signal="area_entered" from="Body/Hurtbox" to="." method="_on_Hurtbox_area_entered"]
