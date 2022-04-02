@@ -28,6 +28,7 @@ gravity=false
 filter=false
 import=false
 renderer=false
+2d=false
 
 [importer_defaults]
 
@@ -83,6 +84,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
 vram_compression/import=false
