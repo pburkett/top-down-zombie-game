@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/main.png-2550ab21c90f78e45d62250bfdcf0eb6.stex"
+path="res://.import/scaled-flashlight.png-c74b78082e3e4b72584f21ad444a08b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileMap/Assets/main.png"
-dest_files=[ "res://.import/main.png-2550ab21c90f78e45d62250bfdcf0eb6.stex" ]
+source_file="res://scaled-flashlight.png"
+dest_files=[ "res://.import/scaled-flashlight.png-c74b78082e3e4b72584f21ad444a08b7.stex" ]
 
 [params]
 

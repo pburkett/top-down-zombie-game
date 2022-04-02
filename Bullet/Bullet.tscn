@@ -34,8 +34,6 @@ radius = 1.0
 height = 3.99438
 
 [node name="Bullet" type="RigidBody2D" groups=["clear_on_level_reload", "hitbox"]]
-position = Vector2( 346, 316 )
-scale = Vector2( 1.00049, 1.08801 )
 collision_layer = 2
 physics_material_override = SubResource( 2 )
 gravity_scale = 0.0
@@ -58,7 +56,6 @@ visible = false
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "traveling"
 

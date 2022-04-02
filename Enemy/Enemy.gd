@@ -13,15 +13,15 @@ export var possible_statuses = {
 		}
 var player_last_known_location 
 
-export var patrol_speed = 1
-export var pursuit_speed = 1.5
+export var patrol_speed = .5
+export var pursuit_speed = .8	
 var current_speed = 0
 export var acceleration_speed = .1
 export var deceleration_speed = .10
 
 export var field_of_view_degrees = 120
 export var fire_field_degrees = 90
-
+var current_point = 0
 
 var status = "idle"
 var bullet = preload("res://Bullet/Bullet.tscn")
@@ -37,6 +37,8 @@ var last_status
 onready var player_node = get_node("/root/Level/Player")
 onready var ray_cast_to_player = get_node("Body/CastToPlayer")
 onready var body_animation_player = get_node("Body/AnimatedSprite")
+onready var path2d = get_node("../../Path2D")
+onready var navigation = get_node("/root/Level/Navigation")
 
 func _ready():
 	connect("area_entered", self, "_on_hurtbox_area_entered")
@@ -47,7 +49,6 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-
 	currently_facing = Vector2(cos($Body.global_rotation), sin($Body.global_rotation))
 	vector_to_player = global_position.direction_to(player_node.get_position())	
 	dot_product_to_player = vector_to_player.dot(currently_facing)
@@ -70,8 +71,8 @@ func look_for_player()->bool:
 	# attempts to find player, returns true if successful
 	var collider = ray_cast_to_player.get_collider() 
 	if collider == player_node and dot_product_to_player > scale_degrees_for_dot_product(field_of_view_degrees)  and distance_to_player < view_distance:
-		player_last_known_location = player_node.get_position()
-		vector_to_last_known_location = global_position.direction_to(player_node.get_position())	
+		player_last_known_location = player_node.get_global_position()
+		vector_to_last_known_location = global_position.direction_to(player_node.get_global_position())	
 		return true
 	return false
 
@@ -99,15 +100,18 @@ func turn_towards_player()->void:
 	move_along_path(false, patrol_speed)
 	$Body.global_rotation = lerp(currently_facing, vector_to_last_known_location, turn_speed).angle()
 
-func path_to_player()->void:	
+func path_to_player()->void:
+	var path = navigation.get_simple_path(player_last_known_location.round(), position.round(), true)
 	var curve = get_parent().get_curve()
 	curve.clear_points()
-	curve.add_point(global_position)
-	curve.add_point(player_last_known_location)
+
+	for index in path.size():
+		curve.add_point(path[-index-1])
 	offset = 0
 
 
 func _on_Hurtbox_area_entered(area ):
+	print('signal')
 	if area.is_in_group('hitbox'):
 		take_damage(area.damage)
 
