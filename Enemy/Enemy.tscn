@@ -5,14 +5,15 @@
 [ext_resource path="res://Enemy/assets/main_spritesheet.res" type="SpriteFrames" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( 16.0261, 7.94768, -7.97382, 8.0261, -8.05224, -15.9738, 15.9476, -16.0522 )
+polygon = PoolVector2Array( 5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, -4.97383, -1.03267, -9.99668 )
 
 [node name="Enemy" type="PathFollow2D"]
 position = Vector2( -2.38419e-07, -2.38419e-07 )
 rotation = 0.00326735
 script = ExtResource( 1 )
+bullets_per_second = 3.0
 bullet_speed = 900
-field_of_view_degrees = 90
+field_of_view_degrees = 60
 fire_field_degrees = 60
 
 [node name="FireRate" type="Timer" parent="."]
