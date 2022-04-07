@@ -34,11 +34,11 @@ var distance_to_player
 
 var last_status
 
-onready var player_node = get_node("/root/Level/Player")
+onready var player_node = get_node("/root/Main/Level/Player")
 onready var ray_cast_to_player = get_node("Body/CastToPlayer")
 onready var body_animation_player = get_node("Body/AnimatedSprite")
 onready var path2d = get_node("../../Path2D")
-onready var navigation = get_node("/root/Level/Navigation")
+onready var navigation = get_node("/root/Main/Level/Navigation")
 
 func _ready():
 	connect("area_entered", self, "_on_hurtbox_area_entered")

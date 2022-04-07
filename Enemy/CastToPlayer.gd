@@ -12,5 +12,5 @@ func _ready():
 
 
 func _physics_process(delta):
-	var player_node = get_node("/root/Level/Player")
+	var player_node = get_node("/root/Main/Level/Player")
 	set_cast_to(to_local(player_node.global_position))

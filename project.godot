@@ -10,8 +10,13 @@ config_version=4
 
 [application]
 
+<<<<<<< HEAD
 config/name="TBD Zombie game MAIN"
 run/main_scene="res://Level.tscn"
+=======
+config/name="TBD Zombie game DEV"
+run/main_scene="res://Main/Main.tscn"
+>>>>>>> dev
 boot_splash/use_filter=false
 
 [debug]
@@ -85,5 +90,9 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+<<<<<<< HEAD
+=======
+environment/default_clear_color=Color( 0.0666667, 0.109804, 0.172549, 1 )
+>>>>>>> dev
 environment/default_environment="res://default_env.tres"
 vram_compression/import=false
