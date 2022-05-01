@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/new_animation_walk/OUTPUT.png" type="Texture" id=2]
+[ext_resource path="res://Player/new_animation_walk/player_animation_final-Sheet-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Player/Swipe.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=6]
@@ -148,7 +148,7 @@ tracks/1/keys = {
 extents = Vector2( 0, 0 )
 
 [sub_resource type="OccluderPolygon2D" id=7]
-polygon = PoolVector2Array( 7.00005, 13.5, 13, 8.49994, 13, -9.00006, 8.99995, -9.00003, 8.99998, -3.50003, -11, -3.49997, -11, -8.99997, -15, -8.99994, -15, 8.50006, -8.99995, 13.5 )
+polygon = PoolVector2Array( -0.99996, 11, 4.00002, 4.49999, -1.00001, -1.5, -5.99998, 4.50002 )
 
 [node name="Player" type="KinematicBody2D"]
 rotation = 1.5708

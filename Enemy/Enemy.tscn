@@ -11,7 +11,6 @@ polygon = PoolVector2Array( 5.98363, -5.01958, -0.999994, 0.00326782, -8.01629, 
 position = Vector2( -2.38419e-07, -2.38419e-07 )
 rotation = 0.00326735
 script = ExtResource( 1 )
-bullets_per_second = 0.5
 bullet_speed = 900
 field_of_view_degrees = 60
 fire_field_degrees = 60

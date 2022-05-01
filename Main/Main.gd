@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var level_number = 0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
