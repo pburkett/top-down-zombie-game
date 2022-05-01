@@ -62,7 +62,6 @@ func _physics_process(delta):
 		print('status changed to ', status)
 	call(possible_statuses[status])
 
-
 func idle():
 	# play idle animation
 	pass

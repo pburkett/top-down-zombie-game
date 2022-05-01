@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -56, 48, 0, 0, 0, 0, 48, 48, 0, 0, 0, 0, 48, 136, 0, 0, 0, 0, -56, 136, 0, 0, 0, 0, -56, 48 )
+}
+
+[node name="PatrolPath" type="Path2D" groups=["clear_on_level_reload"]]
+curve = SubResource( 1 )

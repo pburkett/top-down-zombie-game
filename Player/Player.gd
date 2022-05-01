@@ -19,8 +19,8 @@ signal restart_level
 
 func _ready():
 	animator.connect("animation_finished", self, "_on_animation_finished")
-	var level_node = get_node('/root/Main/Level')
-	connect("restart_level", level_node , "restart_level")
+	var main_node = get_node('/root/Main')
+	connect("restart_level", main_node , "restart_level")
 	animator.play('idle')
 	
 func get_input()->Vector2:
