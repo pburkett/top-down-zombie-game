@@ -3,6 +3,7 @@ extends Node2D
 onready var player_node = get_node("/root/Main/Level/Player")
 
 func _ready():
+	print(player_node)
 	pass
 
 func _process(delta):

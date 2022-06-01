@@ -2,15 +2,15 @@
 
 [ext_resource path="res://HealthIndicator/HealthIndicator.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
-[ext_resource path="res://HealthIndicator/HealthIndicator.gd" type="Script" id=3]
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=3]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="GUI" type="CanvasLayer"]
 follow_viewport_scale = 0.5
+script = ExtResource( 3 )
 
 [node name="HealthIndicator" parent="." instance=ExtResource( 1 )]
 position = Vector2( 928, 80 )
 scale = Vector2( 1.5, 1.5 )
-script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
