@@ -1,3 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://TileMap/Assets/DoorAnimation-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://TileMap/Door.gd" type="Script" id=2]
+
+[node name="Door" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 6
+
+[node name="Staticbody2D" type="StaticBody2D" parent="."]
+z_index = -5
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Staticbody2D"]
+position = Vector2( -16, -16 )
+polygon = PoolVector2Array( 32, 8, 0, 8, 0, 24, 32, 24 )
