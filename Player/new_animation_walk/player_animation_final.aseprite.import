@@ -2,13 +2,11 @@
 
 importer="aseprite.wizard.plugin"
 type="SpriteFrames"
-path="res://.import/player_animation_final.aseprite-33e9194ac8c6dd18e00c47a4be285130.res"
+valid=false
 
 [deps]
 
 source_file="res://Player/new_animation_walk/player_animation_final.aseprite"
-dest_files=[ "res://.import/player_animation_final.aseprite-33e9194ac8c6dd18e00c47a4be285130.res" ]
-
 [params]
 
 split_layers=false

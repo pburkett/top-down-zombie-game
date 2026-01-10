@@ -2,13 +2,11 @@
 
 importer="aseprite.wizard.plugin"
 type="SpriteFrames"
-path="res://.import/Sprite-0001.aseprite-62c3770de39aa3dbc6d03c14db84708a.res"
+valid=false
 
 [deps]
 
 source_file="res://Enemy/assets/Sprite-0001.aseprite"
-dest_files=[ "res://.import/Sprite-0001.aseprite-62c3770de39aa3dbc6d03c14db84708a.res" ]
-
 [params]
 
 split_layers=false
