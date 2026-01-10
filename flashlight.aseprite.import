@@ -2,13 +2,11 @@
 
 importer="aseprite.wizard.plugin"
 type="SpriteFrames"
-path="res://.import/flashlight.aseprite-787abf2c7160f8d2d372c065476b190a.res"
+valid=false
 
 [deps]
 
 source_file="res://flashlight.aseprite"
-dest_files=[ "res://.import/flashlight.aseprite-787abf2c7160f8d2d372c065476b190a.res" ]
-
 [params]
 
 split_layers=false
